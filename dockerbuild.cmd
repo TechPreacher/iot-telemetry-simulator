@@ -1,7 +1,21 @@
-docker build -f src\IotTelemetrySimulator\Dockerfile -t fbeltrao/azureiot-telemetrysimulator:latest  .
-docker tag fbeltrao/azureiot-telemetrysimulator:latest fbeltrao/azureiot-telemetrysimulator:1.0
-docker push fbeltrao/azureiot-telemetrysimulator:latest && docker push fbeltrao/azureiot-telemetrysimulator:1.0
+@echo off
 
-docker build -f src\IotSimulatorDeviceProvisioning\Dockerfile -t fbeltrao/azureiot-simulatordeviceprovisioning:latest  .
-docker tag fbeltrao/azureiot-simulatordeviceprovisioning:latest fbeltrao/azureiot-simulatordeviceprovisioning:1.0
-docker push fbeltrao/azureiot-simulatordeviceprovisioning:latest && docker push fbeltrao/azureiot-simulatordeviceprovisioning:1.0
+if "%~1"=="" (
+    set repo="techpreacher"
+) else (
+    set repo=%1
+)
+
+if "%~2"=="" (
+    set tag="1.0"
+) else (
+    set tag=%2
+)
+
+docker build -f src\IotTelemetrySimulator\Dockerfile -t techpreacher/azureiot-telemetrysimulator:latest  .
+docker tag techpreacher/azureiot-telemetrysimulator:latest techpreacher/azureiot-telemetrysimulator:%tag%
+docker push techpreacher/azureiot-telemetrysimulator:latest && docker push techpreacher/azureiot-telemetrysimulator:%tag%
+
+docker build -f src\IotSimulatorDeviceProvisioning\Dockerfile -t techpreacher/azureiot-simulatordeviceprovisioning:latest  .
+docker tag techpreacher/azureiot-simulatordeviceprovisioning:latest techpreacher/azureiot-simulatordeviceprovisioning:%tag%
+docker push techpreacher/azureiot-simulatordeviceprovisioning:latest && docker push techpreacher/azureiot-simulatordeviceprovisioning:%tag%
