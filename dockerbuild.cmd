@@ -1,7 +1,7 @@
 @echo off
 
 if "%~1"=="" (
-    set repo="techpreacher"
+    set repo="fbeltrao"
 ) else (
     set repo=%1
 )
@@ -12,10 +12,10 @@ if "%~2"=="" (
     set tag=%2
 )
 
-docker build -f src\IotTelemetrySimulator\Dockerfile -t techpreacher/azureiot-telemetrysimulator:latest  .
-docker tag techpreacher/azureiot-telemetrysimulator:latest techpreacher/azureiot-telemetrysimulator:%tag%
-docker push techpreacher/azureiot-telemetrysimulator:latest && docker push techpreacher/azureiot-telemetrysimulator:%tag%
+docker build -f src\IotTelemetrySimulator\Dockerfile -t %repo%/azureiot-telemetrysimulator:latest  .
+docker tag %repo%/azureiot-telemetrysimulator:latest %repo%/azureiot-telemetrysimulator:%tag%
+docker push %repo%/azureiot-telemetrysimulator:latest && docker push %repo%/azureiot-telemetrysimulator:%tag%
 
-docker build -f src\IotSimulatorDeviceProvisioning\Dockerfile -t techpreacher/azureiot-simulatordeviceprovisioning:latest  .
-docker tag techpreacher/azureiot-simulatordeviceprovisioning:latest techpreacher/azureiot-simulatordeviceprovisioning:%tag%
-docker push techpreacher/azureiot-simulatordeviceprovisioning:latest && docker push techpreacher/azureiot-simulatordeviceprovisioning:%tag%
+docker build -f src\IotSimulatorDeviceProvisioning\Dockerfile -t %repo%/azureiot-simulatordeviceprovisioning:latest  .
+docker tag %repo%/azureiot-simulatordeviceprovisioning:latest %repo%/azureiot-simulatordeviceprovisioning:%tag%
+docker push %repo%/azureiot-simulatordeviceprovisioning:latest && docker push %repo%/azureiot-simulatordeviceprovisioning:%tag%
