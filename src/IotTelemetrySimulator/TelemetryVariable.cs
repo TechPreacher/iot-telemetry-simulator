@@ -19,7 +19,7 @@ namespace IotTelemetrySimulator
         [JsonProperty("step")]
         public int? Step { get; set; }
 
-        [JsonProperty("customlengthstring")]
+        [JsonProperty("customLengthString")]
         public int? CustomLengthString { get; set; }
 
         [JsonProperty("values")]
